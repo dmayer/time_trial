@@ -1,10 +1,3 @@
-```
----------------------------------------------------------------------------
-| Please check http://github.com/dmayer/time_trial for an updated version |
-| of the source code and the corresponding wiki for proper documentation. |
----------------------------------------------------------------------------
-```
-
 # Time Trial GUI
 The source code for the time trial GUI is in the `time_trial` folder. 
 
@@ -59,7 +52,7 @@ From here, a feasibility analysis can be performed by right clicking an individu
 
 
 # Automated Attacks
-This feature along with additional documentation will be released during BlackHat 2014 at http://github.com/dmayer/time_trial
+To come.
 
 # Disclaimer
 The source code was developed with a focus on the required functionality.
