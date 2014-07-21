@@ -1,0 +1,6 @@
+rq
+matplotlib
+numpy
+rq_dashboard
+sqlalchemy
+pygments

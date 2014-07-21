@@ -1,0 +1,4 @@
+Import('env')
+
+env.Library('#lib/libclient',
+  Split(""" timing_client.cpp http_timing_client.cpp"""))

@@ -1,0 +1,31 @@
+import os 
+if ARGUMENTS.get('debug', 0):
+    ccflags = '-g -D DEBUG'
+else:
+    ccflags = '-O3 -march=core2 -mssse3 -finline -funroll-loops '
+#    ccflags = '-O3 -march=core2 -mssse3 -mfpmath=sse -finline -funroll-loops '
+
+env = Environment(CC = 'g++',
+                  CPPPATH = ['.', os.path.abspath('include/')],
+                  CCFLAGS = ccflags )
+
+
+env.SConsignFile()
+
+subdirs = [
+    'socket',
+    'servers',
+    'clients',
+    'utils'
+]
+
+# build all the libraries
+Export('env')
+for dir in subdirs:
+    SConscript( os.path.join('src', dir, 'SConscript'), exports = ['env'])
+
+
+# then build the binaries
+binenv = env.Clone()
+binenv.Append(LIBPATH=['#lib'])
+SConscript( 'src/bin/SConscript', exports = ['binenv'])

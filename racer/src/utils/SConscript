@@ -1,0 +1,6 @@
+Import('env')
+
+env.Library('#lib/libutils',
+  Split("""time_helper.cpp
+           http_request.cpp
+           string_split.cpp"""))

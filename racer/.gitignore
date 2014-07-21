@@ -1,0 +1,6 @@
+*.o
+*.a
+*.swp
+.sconsign.dblite
+lib/
+bin/

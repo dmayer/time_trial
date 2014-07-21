@@ -1,0 +1,5 @@
+Import('env')
+
+env.Library('#lib/libsocket',
+  Split("""raw_socket.cpp
+           basic_size_header_socket.cpp"""))
