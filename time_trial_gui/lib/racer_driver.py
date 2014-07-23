@@ -4,8 +4,8 @@ import os
 
 __author__ = 'daniel'
 
-CPP_HTTP_TIMING_EXECUTABLE = '../../../../cpp/bin/run_http_timing_client'
-CPP_ECHO_TIMING_EXECUTABLE = "/home/mayer/repos/remote_timing_attacks/src/cpp/bin/run_timing_client"
+CPP_HTTP_TIMING_EXECUTABLE = '../../racer/bin/run_http_timing_client'
+CPP_ECHO_TIMING_EXECUTABLE = "../../racer/bin/run_timing_client"
 
 
 import subprocess
