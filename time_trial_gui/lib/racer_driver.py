@@ -61,7 +61,7 @@ def execute_trial(trial):
     else:
         print("Executing Echo Trial...")
         #TODO: get this from a config file
-        cmd.append("/home/mayer/repos/remote_timing_attacks/src/cpp/bin/run_timing_client")
+        cmd.append(CPP_ECHO_TIMING_EXECUTABLE)
         cmd.append(trial.target_host)
         cmd.append(str(trial.target_port))
         cmd.append(str(int(trial.real_time)))
