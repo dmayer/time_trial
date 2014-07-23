@@ -1,0 +1,14 @@
+Import('binenv')
+
+binenv.Program('#bin/run_echo_server',
+  Split("run_echo_server.cpp"),
+  LIBS=['gmp', 'gmpxx', 'server', 'socket', 'gmp', 'gmpxx' ])
+
+binenv.Program('#bin/run_timing_client',
+  Split("run_timing_client.cpp"),
+  LIBS=['gmp', 'gmpxx', 'server', 'socket',  'client', 'socket', 'utils', 'gmp', 'gmpxx' ])
+
+binenv.Program('#bin/run_http_timing_client',
+  Split("run_http_client.cpp"),
+  LIBS=['gmp', 'gmpxx', 'curl', 'server', 'socket', 'client', 'utils',
+        'boost_system', 'boost_thread', 'boost_date_time', 'pthread', 'cppnetlib-uri', 'ssl', 'crypt', 'crypto', 'cppnetlib-client-connections'])
