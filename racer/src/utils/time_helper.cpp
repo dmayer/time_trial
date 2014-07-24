@@ -33,7 +33,7 @@ void TimeHelper::current_utc_time(timespec * ts) {
 void TimeHelper::start()
 {
 		marks.clear();
-		start_wall = times(&start_times);
+//		start_wall = times(&start_times);
         current_utc_time(&start_clock_time); // Works on Linux
 
 		active = 1;
@@ -45,12 +45,12 @@ void TimeHelper::mark()
 	if(active)
 	{
 		TimeMark tmp;
-		mark_wall = times(&mark_times);
-		active = 2;
-		tmp.utime = do_utime();
-		tmp.stime = do_stime();
-		tmp.wtime = do_wtime();
-		tmp.ticks = do_ticks();
+//		mark_wall = times(&mark_times);
+//		active = 2;
+//		tmp.utime = do_utime();
+//		tmp.stime = do_stime();
+//		tmp.wtime = do_wtime();
+//		tmp.ticks = do_ticks();
         current_utc_time(&tmp.clock_time); // Works on Linux
 		marks.push_back(tmp);
 	} else {
@@ -192,20 +192,20 @@ vector<TimeMark> TimeHelper::getDiffVec(){
         // subtract the time for the previous mark, to get interval times.
         TimeMark newMark;
         if( i > 0 ) {
-        newMark.utime = (split_times[i].utime - split_times[i-1].utime);
-        newMark.stime = (split_times[i].stime - split_times[i-1].stime);
-        newMark.wtime = (split_times[i].wtime - split_times[i-1].wtime);
-        newMark.ticks = (split_times[i].ticks - split_times[i-1].ticks);
+//        newMark.utime = (split_times[i].utime - split_times[i-1].utime);
+//        newMark.stime = (split_times[i].stime - split_times[i-1].stime);
+//        newMark.wtime = (split_times[i].wtime - split_times[i-1].wtime);
+//        newMark.ticks = (split_times[i].ticks - split_times[i-1].ticks);
 
 
         newMark.clock_time = diff_timespec(split_times[i-1].clock_time, split_times[i].clock_time);
 
         // except for the first time
         } else {
-        newMark.utime = split_times[i].utime;
-        newMark.stime = split_times[i].stime;
-        newMark.wtime = split_times[i].wtime;
-        newMark.ticks = split_times[i].ticks;
+//        newMark.utime = split_times[i].utime;
+//        newMark.stime = split_times[i].stime;
+//        newMark.wtime = split_times[i].wtime;
+//        newMark.ticks = split_times[i].ticks;
         newMark.clock_time = split_times[i].clock_time;
         }
         diff_times.push_back(newMark);
