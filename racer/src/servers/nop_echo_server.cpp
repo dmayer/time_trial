@@ -15,6 +15,19 @@ NopEchoServer::NopEchoServer(int port, double frequency_in_ghz) {
 	this->frequency_in_ghz = frequency_in_ghz;
 }
 
+
+// from: https://stackoverflow.com/questions/7935518/is-clock-gettime-adequate-for-submicrosecond-timing
+__inline__ uint64_t rdtsc(void) {
+  uint32_t lo, hi;
+  __asm__ __volatile__ (      // serialize
+  "xorl %%eax,%%eax \n        cpuid"
+  ::: "%rax", "%rbx", "%rcx", "%rdx");
+  /* We cannot use "=A", since this would use %rax on x86_64 and return only the         lower 32bits of the TSC */
+   __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+  return (uint64_t)hi << 32 | lo;
+ }
+
+
 /*
 * Assume interrupts are turned off.
 * Length of each clock cycle = (1 / ProcessorFrequency)
@@ -25,6 +38,11 @@ __inline__ void nop_sleep(unsigned long clk_cycs) {
             __asm__ volatile ("nop;");
 }
 
+void NopEchoServer::sleep_for(unsigned long nanoseconds) {
+   uint64_t end = rdtsc() + nanoseconds * this->frequency_in_ghz;
+   while(rdtsc() < end) { }
+}
+
 void NopEchoServer::loop() {
     int wait_time;
     int result;
@@ -32,8 +50,7 @@ void NopEchoServer::loop() {
 
 	while(true) {
 		socket->receiveInteger(wait_time);
-		to_wait = wait_time * this->frequency_in_ghz;
-		nop_sleep(to_wait);
+		sleep_for(wait_time);
 		socket->sendInteger(wait_time);
 		if(result != 0) {
 			std::cout << "Return was not 0." << std::endl;

@@ -16,6 +16,7 @@ class NopEchoServer {
 public:
 	NopEchoServer(int, double);
 	virtual ~NopEchoServer();
+     void sleep_for(unsigned long );
 
 	void loop();
 
