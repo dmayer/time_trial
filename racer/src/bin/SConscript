@@ -1,5 +1,9 @@
 Import('binenv')
 
+binenv.Program('#bin/run_nop_echo_server',
+  Split("run_nop_echo_server.cpp"),
+  LIBS=['gmp', 'gmpxx', 'server', 'socket', 'gmp', 'gmpxx' ])
+  
 binenv.Program('#bin/run_echo_server',
   Split("run_echo_server.cpp"),
   LIBS=['gmp', 'gmpxx', 'server', 'socket', 'gmp', 'gmpxx' ])
