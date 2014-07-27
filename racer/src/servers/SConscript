@@ -1,4 +1,4 @@
 Import('env')
 
 env.Library('#lib/libserver',
-  Split("""echo_server.cpp"""))
+  Split("""echo_server.cpp nop_echo_server.cpp"""))
