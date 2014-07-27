@@ -28,8 +28,7 @@ __inline__ void nop_sleep(unsigned long clk_cycs) {
 void NopEchoServer::loop() {
     int wait_time;
     int result;
-    double frequency = 2.9;
-    double long to_wait;
+    long int to_wait;
 
 	while(true) {
 		socket->receiveInteger(wait_time);
