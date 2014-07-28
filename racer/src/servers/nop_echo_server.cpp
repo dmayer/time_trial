@@ -38,9 +38,11 @@ __inline__ void nop_sleep(unsigned long clk_cycs) {
             __asm__ volatile ("nop;");
 }
 
-void NopEchoServer::sleep_for(unsigned long nanoseconds) {
+__inline__ void NopEchoServer::sleep_for(unsigned long nanoseconds) {
    uint64_t end = rdtsc() + nanoseconds * this->frequency_in_ghz;
-   while(rdtsc() < end) { }
+   while(rdtsc() < end) {
+            __asm__ volatile ("nop;");
+   }
 }
 
 void NopEchoServer::loop() {
