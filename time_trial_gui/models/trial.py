@@ -1,7 +1,7 @@
 __author__ = 'daniel'
 
 from sqlalchemy import Integer, Column, String, ForeignKey, Text, DateTime,Boolean
-from sqlalchemy.orm import  relationship
+from sqlalchemy.orm import  relationship, deferred
 from lib.base import Base
 from models.racer import Racer
 
@@ -25,7 +25,7 @@ class Trial(Base):
 
     status = Column(String(50))
     job = Column(Text)
-    result = Column(Text)
+    result = deferred(Column(Text))
     start_date = Column(DateTime)
     end_date = Column(DateTime)
 

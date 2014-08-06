@@ -24,7 +24,7 @@ void TimeHelper::current_utc_time(timespec * ts) {
   ts->tv_sec = mts.tv_sec;
   ts->tv_nsec = mts.tv_nsec;
 #else
-  clock_gettime(CLOCK_REALTIME, ts);
+  clock_gettime(CLOCK_MONOTONIC, ts);
 #endif
 
 }

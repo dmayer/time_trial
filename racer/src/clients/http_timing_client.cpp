@@ -30,7 +30,7 @@ vector<TimeMark> & HTTPTimingClient::run(long reps) {
         t.mark();
     	vector<TimeMark> tmp = t.getDiffVec();
     	ret->push_back(tmp[1]);
-		usleep(100);
+		usleep(1000);
 	}
 	return *ret;
 
